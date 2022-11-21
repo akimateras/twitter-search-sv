@@ -64,17 +64,12 @@ const notify = (() => {
 
 const tweetsContainer = document.querySelector(TWEETS_CONTAINER_SELECTOR);
 const extract = () => {
-  const result = [];
   const tweets = tweetsContainer.querySelectorAll(TWEETS_SELECTOR);
-  for (const tweet of tweets) {
-    if (!tweet.innerText)
-      continue;
-    const text = tweet.innerText.normalize('NFKC');
-    const m = text.match(TARGET_REGEXP);
-    if (!!m)
-      result.push(m[0]);
-  }
-  return result;
+  return [...tweets].filter(t => !!t.innerText)
+    .map(t => t.innerText.normalize('NFKC'))
+    .map(t => t.match(TARGET_REGEXP))
+    .filter(m => !!m)
+    .map(m => m[0]);
 }
 
 const read = {};
