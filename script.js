@@ -22,7 +22,7 @@ const TWEETS_SELECTOR = 'div[data-testid=tweetText]';
 const VISUAL_TEXT_CONVERTER = (input) => input.toUpperCase();
 
 // speech notification text definition
-const SPEECH_TEXT_CONVERTER = (input) => [...input.toUpperCase()].reduce((r, a) => r + ' ' + a);
+const SPEECH_TEXT_CONVERTER = (input) => [...input.toUpperCase()].reduce((a, r) => a + ' ' + r);
 
 // visual notification style
 const CARDS_CONTAINER_STYLE = {
